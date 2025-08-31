@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { Button, Text } from 'grommet';
+import { Button, Text, Box, Heading } from 'grommet';
+import { Camera, Microphone } from 'grommet-icons';
 import styled from 'styled-components';
-import { videoDiagnostics } from '@telnyx/rtc-diagnostics';
 
 import { TelnyxMeetContext } from 'contexts/TelnyxMeetContext';
 
@@ -181,17 +181,21 @@ function MediaPreview() {
             ></video>
           </div>
         ) : (
-          <Text
+          <Box
+            align='center'
+            justify='center'
+            fill
             style={{
               position: 'absolute',
-              left: '50%',
-              top: '50%',
-              color: '#fff',
-              transform: 'translateX(-50%)',
+              left: 0,
+              top: 0,
             }}
           >
-            Camera is off
-          </Text>
+            <Camera size='large' color='light-1' />
+            <Text color='light-1' textAlign='center' margin={{ top: 'small' }}>
+              Cámara apagada
+            </Text>
+          </Box>
         )}
         <div
           style={{

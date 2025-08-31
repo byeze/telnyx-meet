@@ -71,7 +71,7 @@ export default function Rooms({
     isAutoReconnectEnabled: queryParameters.auto_reconnect === 'true',
   };
 
-  const [roomId, setRoomId] = useState<string>();
+  const [roomId, setRoomId] = useState<string>('default-room');
   const [username, setUsername] = useState<string>('');
   const [tokens, setTokens] = useState<{
     clientToken: string;
@@ -124,7 +124,12 @@ export default function Rooms({
   }, []);
 
   useEffect(() => {
-    setRoomId(id);
+    // Auto-generate a room ID if not provided
+    if (id) {
+      setRoomId(id);
+    } else {
+      setRoomId(`room-${Date.now()}`);
+    }
   }, [id]);
 
   useEffect(() => {
@@ -144,7 +149,7 @@ export default function Rooms({
       reconnectCount <= MAX_RECONNECT_TIME
     ) {
       setReconnectCount((count) => count + 1);
-      sendNotification({ body: `${reconnectCount} - Auto reconnecting...` });
+      sendNotification({ body: `${reconnectCount} - Reconectando automáticamente...` });
       joinRoom();
     }
   };
@@ -212,7 +217,7 @@ export default function Rooms({
   return (
     <Fragment>
       <Head>
-        <title>Join Video Room</title>
+        <title>Videollamada</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -257,13 +262,8 @@ export default function Rooms({
             <GridPreviewContainer>
               <MediaPreview />
               <JoinRoom
-                roomId={roomId || ''}
                 username={username}
                 updateUsername={setUsername}
-                updateRoomId={setRoomId}
-                updateTokens={setTokens}
-                clientToken={clientToken}
-                refreshToken={refreshToken}
                 onClickJoin={onClickJoin}
               />
             </GridPreviewContainer>

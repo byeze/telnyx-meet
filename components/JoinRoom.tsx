@@ -1,72 +1,59 @@
-import React, { useState } from 'react';
-import { Box, Button, TextInput } from 'grommet';
+import React from 'react';
+import { Box, Button, TextInput, Text, Heading } from 'grommet';
+import { User } from 'grommet-icons';
 
 interface Props {
-  roomId: string;
   username: string;
-  updateRoomId?: React.Dispatch<React.SetStateAction<string | undefined>>;
   updateUsername: React.Dispatch<React.SetStateAction<string>>;
-  updateTokens: React.Dispatch<
-    React.SetStateAction<{ clientToken: string; refreshToken: string }>
-  >;
-  clientToken: string;
-  refreshToken: string;
   onClickJoin: () => void;
 }
 
 const JoinRoom = ({
-  roomId,
   username,
-  updateRoomId,
   updateUsername,
   onClickJoin,
 }: Props) => {
   return (
-    <>
-      <Box
-        pad='small'
-        gap='medium'
-        style={{
-          justifySelf: 'center',
-        }}
-      >
-        <Box
-          background={{ color: 'white', opacity: 'weak' }}
-          round='xsmall'
-          pad='small'
-        >
-          Enter the Room UUID and choose a name for yourself
-        </Box>
-
-        <TextInput
-          data-testid='input-room-uuid'
-          value={roomId}
-          onChange={(e) => {
-            if (typeof updateRoomId === 'function') {
-              updateRoomId(e.target.value);
-            }
-          }}
-          placeholder={'Room UUID'}
-        />
-
-        <TextInput
-          data-testid='input-username'
-          value={username}
-          onChange={(e) => {
-            updateUsername(e.target.value);
-          }}
-          placeholder='Your name'
-        />
-
-        <Button
-          data-testid='btn-join-room'
-          primary
-          disabled={!roomId || !username}
-          label='Join room'
-          onClick={onClickJoin}
-        />
+    <Box
+      pad='large'
+      gap='large'
+      background='white'
+      round='medium'
+      elevation='medium'
+      width='medium'
+      style={{
+        justifySelf: 'center',
+      }}
+    >
+      <Box align='center' gap='medium'>
+        <User size='large' color='brand' />
+        <Heading level='3' margin='none' textAlign='center'>
+          ¿Cómo te llamas?
+        </Heading>
+        <Text textAlign='center' color='dark-3'>
+          Escribe tu nombre para comenzar
+        </Text>
       </Box>
-    </>
+
+      <TextInput
+        data-testid='input-username'
+        value={username}
+        onChange={(e) => {
+          updateUsername(e.target.value);
+        }}
+        placeholder='Tu nombre'
+        size='large'
+      />
+
+      <Button
+        data-testid='btn-join-room'
+        primary
+        disabled={!username.trim()}
+        label='Unirse a la Videollamada'
+        onClick={onClickJoin}
+        size='large'
+      />
+    </Box>
   );
 };
 

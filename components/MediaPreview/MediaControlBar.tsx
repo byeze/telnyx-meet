@@ -326,7 +326,7 @@ function MediaControlBar({
             </Text>
           </Box>
           <Text size='xsmall' color='light-6'>
-            {isAudioTrackEnabled ? 'Mute mic' : 'Unmute mic'}
+            {isAudioTrackEnabled ? 'Silenciar' : 'Activar micrófono'}
           </Text>
         </Box>
       </Button>
@@ -345,7 +345,7 @@ function MediaControlBar({
             </Text>
           </Box>
           <Text size='xsmall' color='light-6'>
-            {isVideoTrackEnabled ? 'Stop video' : 'Start video'}
+            {isVideoTrackEnabled ? 'Apagar cámara' : 'Encender cámara'}
           </Text>
         </Box>
       </Button>

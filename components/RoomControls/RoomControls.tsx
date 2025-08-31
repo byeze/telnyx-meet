@@ -571,11 +571,11 @@ export default function RoomControls({
             disabled={!selfStream?.isConfigured}
             enabledIcon={{
               icon: faMicrophone,
-              label: 'Mute mic',
+              label: 'Silenciar',
             }}
             disabledIcon={{
               icon: faMicrophoneSlash,
-              label: 'Unmute mic',
+              label: 'Activar micrófono',
             }}
             showEnabledIcon={selfStream?.isAudioEnabled}
           />
@@ -589,11 +589,11 @@ export default function RoomControls({
             disabled={!selfStream?.isConfigured}
             enabledIcon={{
               icon: faVideo,
-              label: 'Stop video',
+              label: 'Apagar cámara',
             }}
             disabledIcon={{
               icon: faVideoSlash,
-              label: 'Start video',
+              label: 'Encender cámara',
             }}
             showEnabledIcon={selfStream?.isVideoEnabled}
           />
@@ -605,11 +605,11 @@ export default function RoomControls({
             disabled={disableScreenshare}
             enabledIcon={{
               icon: faLaptop,
-              label: 'Stop share',
+              label: 'Parar compartir',
             }}
             disabledIcon={{
               icon: faLaptop,
-              label: 'Start share',
+              label: 'Compartir pantalla',
             }}
             showEnabledIcon={presentationStream?.isVideoEnabled}
             onClick={handleShareScreenClick}
@@ -644,7 +644,7 @@ export default function RoomControls({
                 </Box>
               </Box>
               <Text size='xsmall' color='light-6'>
-                Participants
+                Participantes
               </Text>
             </Box>
           </Button>
@@ -748,7 +748,7 @@ export default function RoomControls({
 
       <LeaveButton
         data-testid='btn-leave-room'
-        label='Leave'
+        label='Salir'
         onClick={handleLeaveRoom}
         color='status-error'
       />

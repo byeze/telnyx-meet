@@ -12,7 +12,7 @@ export default function RoomInfo({ roomId }: { roomId: string }) {
         height='60px'
       >
         <Heading margin='none' size='1.2em'>
-          {roomId}
+          Sala de Video
         </Heading>
       </Box>
     </Fragment>

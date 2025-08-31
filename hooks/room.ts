@@ -166,19 +166,19 @@ export const useRoom = ({
     roomRef.current.on('disconnected', (reason, state) => {
       if (reason === 'network_error') {
         sendNotification({
-          body: 'network_error - Check your network connection',
+          body: 'Error de conexión - Revisa tu conexión a internet',
         });
       }
 
       if (reason === 'user_initiated') {
         sendNotification({
-          body: 'user_initiated - Disconnect method executed by user',
+          body: 'Desconectado por el usuario',
         });
       }
 
       if (reason === 'timed_out') {
         sendNotification({
-          body: 'timed_out - Reached out timeout limit to connect',
+          body: 'Tiempo agotado - No se pudo conectar',
         });
       }
 
@@ -218,7 +218,7 @@ export const useRoom = ({
         if (reason === 'kicked') {
           if (state.localParticipantId === participantId) {
             sendNotification({
-              body: 'You got kicked from the room by the moderator!',
+              body: '¡Has sido expulsado de la sala por el moderador!',
             });
           } else {
             const context = JSON.parse(
@@ -228,7 +228,7 @@ export const useRoom = ({
             sendNotification({
               body: `${
                 context.username ? context.username : participantId
-              } has been kicked by the moderator!`,
+              } ha sido expulsado por el moderador`,
             });
           }
         }

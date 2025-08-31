@@ -86,7 +86,7 @@ function Room({
                 size='xxlarge'
                 color='status-disabled'
               >
-                Joining room...
+                Conectando...
               </Text>
             </Box>
           </Box>
@@ -118,7 +118,7 @@ function Room({
                 size='xxlarge'
                 color='status-disabled'
               >
-                Joining room...
+                Conectando...
               </Text>
             </Box>
           )}
